@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.joker"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "SERVER_URL", "\"https://official-joke-api.appspot.com/\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.Appcompat_version"
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ConstraintL_version"
+
+    //material design
+    implementation "com.google.android.material:material:$rootProject.MaterialD_version"
+
+    //Live data and viewModel
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0-alpha03"
+
+
+    //Dagger
+    implementation "com.google.dagger:dagger:$rootProject.Dagger_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    kapt "com.google.dagger:dagger-compiler:$rootProject.Dagger_version"
+    implementation "com.google.dagger:dagger-android:$rootProject.Dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.Dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.Dagger_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.Glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.Glide_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.Retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.Retrofit_version"
+    implementation("com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp_interceptor_version")
+
+    //GSON
+    implementation "com.google.code.gson:gson:$rootProject.Gson_version"
+
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.Coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.Coroutines_version"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ktx_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ktx_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ktx_version"
+
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
+}
