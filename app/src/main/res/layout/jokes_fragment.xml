@@ -1,34 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-        <import type="com.example.joker.model.Resource.Status"/>
+
+        <import type="com.example.joker.model.Resource.Status" />
+
         <variable
             name="vm"
             type="com.example.joker.ui.home.MainViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.home.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/jokes_recycler"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            tools:listitem="@layout/joke_item"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/joke_item" />
+
         <ProgressBar
             android:layout_width="wrap_content"
-            app:visibleGone="@{vm.jokesLiveData.Status==Status.LOADING}"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibleGone="@{vm.jokesLiveData.Status==Status.LOADING}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            app:visibleGone="@{vm.jokesLiveData.Status==Status.ERROR}"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/info_img"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:src="@drawable/ic_baseline_info_24"
+                android:tint="@android:color/holo_red_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/error_message_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/something_went_wrong"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@android:color/holo_red_dark"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/info_img" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="@string/try_again"
+                app:cornerRadius="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="@{()->vm.tryAgain()}"
+                app:layout_constraintTop_toBottomOf="@id/error_message_txt" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@ class JokesFragment : DaggerFragment() {
         binding.jokesRecycler.adapter =jokesAdapter
         viewModel.jokesLiveData.observe(this, Observer {
             if (it.status == Resource.Status.SUCCESS && !it.data.isNullOrEmpty()) {
-                jokesAdapter.updateJokes(ArrayList(it.data.toMutableList()))
+                jokesAdapter.updateJokes(it.data)
             }
 
         })
@@ -56,6 +56,7 @@ class JokesFragment : DaggerFragment() {
                 viewModel.listScrolled(layoutManager.childCount, layoutManager.findLastVisibleItemPosition(),  layoutManager.itemCount)
             }
         })
+
         return binding.root
     }
 

@@ -11,34 +11,46 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val jokesApi: JokesApi) : ViewModel() {
 
 
-    private val _jokesLiveData = MutableLiveData<Resource<List<Joke>?>>()
-    val jokesLiveData=_jokesLiveData
-    private var isLoading=false
+    private val _jokesLiveData = MutableLiveData<Resource<ArrayList<Joke>?>>()
+    val jokesLiveData = _jokesLiveData
+    private var allJokes = arrayListOf<Joke>()
+    private var isLoading = false
     lateinit var selectedJoke: Joke
+
     init {
         loadJokes()
     }
 
 
-    private fun loadJokes(){
-        isLoading=true
-    viewModelScope.launch {
-        _jokesLiveData.postValue(Resource.loading())
-        try {
-            val jokes = jokesApi.getJokes()
-            _jokesLiveData.postValue(Resource.success(jokes))
-        } catch (ex: Exception) {
-            _jokesLiveData.postValue(Resource.error(ex.message.toString()))
+    private fun loadJokes() {
+        isLoading = true
+        viewModelScope.launch {
+            _jokesLiveData.postValue(Resource.loading())
+            try {
+                val jokes = jokesApi.getJokes()
+                allJokes.addAll(jokes)
+                val uniqueJokes = eliminateRedondantJokes(jokes)
+                _jokesLiveData.postValue(Resource.success(ArrayList(uniqueJokes)))
+            } catch (ex: Exception) {
+                _jokesLiveData.postValue(Resource.error(ex.message.toString()))
+            }
+            isLoading = false
         }
-        isLoading=false
     }
+
+    private fun eliminateRedondantJokes(jokes: ArrayList<Joke>): List<Joke> {
+        return jokes.filter { allJokes.contains(it) }
     }
 
 
     fun listScrolled(visibleItemCount: Int, lastVisibleItem: Int, totalItemCount: Int) {
-        if (visibleItemCount + lastVisibleItem >= totalItemCount  && !isLoading) {
+        if (visibleItemCount + lastVisibleItem + VISIBLE_THRESHOLD >= totalItemCount && !isLoading) {
             loadJokes()
         }
+    }
+
+    fun tryAgain(){
+        loadJokes()
     }
 
     companion object {

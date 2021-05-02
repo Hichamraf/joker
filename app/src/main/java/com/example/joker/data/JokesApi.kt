@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface JokesApi {
 
 @GET("random_ten")
-suspend fun getJokes() : List<Joke>
+suspend fun getJokes() : ArrayList<Joke>
 }
