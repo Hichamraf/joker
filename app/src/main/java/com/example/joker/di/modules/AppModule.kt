@@ -25,19 +25,6 @@ class AppModule {
         return Gson()
     }
 
-    @Singleton
-    @Provides
-    internal fun providesRequestManager(application: BaseApplication, requestOptions: RequestOptions): RequestManager {
-        return Glide.with(application).applyDefaultRequestOptions(requestOptions)
-    }
-
-    @Singleton
-    @Provides
-    internal fun provideRequestManager(): RequestOptions {
-        return RequestOptions
-            .placeholderOf(R.drawable.ic_launcher_background)
-            .error(R.drawable.ic_launcher_background)
-    }
 
     @Singleton
     @Provides

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="joke"
+            type="com.example.joker.model.Joke" />
+        <variable
+            name="imageUrl"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.jokes.JokeDetails">
+
+
+        <ImageView
+            android:id="@+id/joke_img"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType="centerCrop"
+            app:imageSrc="@{imageUrl}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/txt_setup"
+            style="@style/TextAppearance.AppCompat.Caption.Caption1"
+            android:layout_width="0dp"
+            android:textColor="@color/textColor"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{joke.setup}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/joke_img"
+            tools:text="Why did the coffee file a police report?" />
+
+        <TextView
+            android:id="@+id/txt_punchline"
+            android:textColor="@color/textColor"
+            style="@style/TextAppearance.AppCompat.Caption.Caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="@{joke.punchline}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_setup"
+            tools:text="Answer" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
