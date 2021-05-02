@@ -1,7 +1,6 @@
-package com.example.joker.ui.home.jokes
+package com.example.joker.home.jokes
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.joker.R
 import com.example.joker.databinding.FragmentJokeDetailsBinding
-import com.example.joker.databinding.JokesFragmentBinding
-import com.example.joker.ui.home.MainViewModel
+import com.example.joker.home.MainViewModel
 import dagger.android.support.DaggerFragment
 import hicham.com.bonialnews.di.viewmodel.ViewModelFactory
 import javax.inject.Inject

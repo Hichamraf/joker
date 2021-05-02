@@ -1,4 +1,4 @@
-package com.example.joker.ui.home
+package com.example.joker.home
 
 import androidx.lifecycle.*
 import com.example.joker.data.JokesApi

@@ -2,7 +2,7 @@ package hicham.com.bonialnews.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.joker.ui.home.MainViewModel
+import com.example.joker.home.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Joker">
-        <activity android:name=".ui.home.MainActivity">
+        <activity android:name="com.example.joker.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

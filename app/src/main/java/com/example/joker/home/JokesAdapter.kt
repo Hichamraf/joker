@@ -1,4 +1,4 @@
-package com.example.joker.ui.home
+package com.example.joker.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

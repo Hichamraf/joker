@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/jokesFragment"
-        android:name="com.example.joker.ui.home.jokes.JokesFragment"
+        android:name="com.example.joker.home.jokes.JokesFragment"
         android:label="jokes_fragment"
         tools:layout="@layout/jokes_fragment" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/jokeDetails"
-        android:name="com.example.joker.ui.home.jokes.JokeDetails"
+        android:name="com.example.joker.home.jokes.JokeDetails"
         android:label="fragment_joke_details"
         tools:layout="@layout/fragment_joke_details" />
 </navigation>
