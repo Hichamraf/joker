@@ -60,10 +60,10 @@ dependencies {
     implementation "com.google.dagger:dagger:$rootProject.Dagger_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
-    kapt "com.google.dagger:dagger-compiler:$rootProject.Dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.Dagger_version"
     implementation "com.google.dagger:dagger-android:$rootProject.Dagger_version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.Dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$rootProject.Dagger_version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.Dagger_version"
 
     //Glide
     implementation "com.github.bumptech.glide:glide:$rootProject.Glide_version"
