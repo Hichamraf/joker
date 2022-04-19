@@ -5,23 +5,7 @@ import com.example.joker.model.Joke
 import junit.framework.TestCase
 import org.mockito.Mock
 
-class MainViewModelTest : TestCase() {
+class MainViewModelTest  {
 
-    @Mock
-    lateinit var jokesApi: JokesApi
-    lateinit var viewModel: MainViewModel
 
-    public override fun setUp() {
-        super.setUp()
-        viewModel = MainViewModel(jokesApi)
-        val jokes = prepareTenJokes()
-    }
-
-    private fun prepareTenJokes(): ArrayList<Joke> {
-      return arrayListOf(Joke(1,"test","test","test"))
-    }
-
-    public override fun tearDown() {}
-
-    fun testListScrolled() {}
 }
